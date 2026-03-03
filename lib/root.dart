@@ -1,7 +1,9 @@
 import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/app_images.dart';
-import 'package:flower_app/features/home/home.dart';
-import 'package:flower_app/features/profile/profile.dart';
+import 'package:flower_app/features/cart/presentation/screens/cart_screen.dart';
+import 'package:flower_app/features/category/presentation/screens/category_screen.dart';
+import 'package:flower_app/features/home/presentation/screens/home.dart';
+import 'package:flower_app/features/profile/presenttation/screens/profile.dart';
 import 'package:flutter/material.dart';
 
 class Root extends StatefulWidget {
@@ -14,7 +16,7 @@ class Root extends StatefulWidget {
 class _RootState extends State<Root> {
   int currentIndex = 0;
 
-  final List<Widget> screens = [Home(), Profile()];
+  final List<Widget> screens = [Home(),CategoryScreen(),CartScreen(),Profile()];
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +28,22 @@ class _RootState extends State<Root> {
         decoration: BoxDecoration(
           color: AppColors.white,
           borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.3),
+              spreadRadius: 2,
+              blurRadius: 8,
+              offset: Offset(4, 6), // X, Y offset
+            ),
+          ],
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             navItem(AppImages.homeIcon, 0),
-            navItem(AppImages.profileIcon, 1)
+            navItem(AppImages.categoryIcon, 1),
+            navItem(AppImages.cartIcon, 2),
+            navItem(AppImages.profileIcon, 3)
           ],
         ),
       ),
