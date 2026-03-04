@@ -28,6 +28,7 @@ import '../../features/home/domain/repository/home_repository.dart' as _i541;
 import '../../features/home/domain/usecase/best_seller_usecase.dart' as _i484;
 import '../../features/home/domain/usecase/category_usecase.dart' as _i589;
 import '../../features/home/domain/usecase/occasion_usecase.dart' as _i739;
+import '../../features/home/domain/usecase/product_usecase.dart' as _i1022;
 import '../../features/home/presentation/cubit/home_cubit.dart' as _i9;
 import '../dio/dio_helper.dart' as _i676;
 
@@ -62,11 +63,15 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i739.OccasionUseCase>(
       () => _i739.OccasionUseCase(homeRepository: gh<_i541.HomeRepository>()),
     );
+    gh.factory<_i1022.ProductUseCase>(
+      () => _i1022.ProductUseCase(homeRepository: gh<_i541.HomeRepository>()),
+    );
     gh.factory<_i9.HomeCubit>(
       () => _i9.HomeCubit(
         gh<_i589.CategoryUseCase>(),
         gh<_i484.BestSellerUseCase>(),
         gh<_i739.OccasionUseCase>(),
+        gh<_i1022.ProductUseCase>(),
       ),
     );
     gh.factory<_i117.AuthCubit>(

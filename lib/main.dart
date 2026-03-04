@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       title: 'Flower App',
       theme: AppThemes.lightMode,
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.register,
+      initialRoute: AppRoutes.root,
       onGenerateRoute: AppRouter.generateRoute,
     );
   }
