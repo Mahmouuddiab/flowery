@@ -1,7 +1,7 @@
 import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/app_images.dart';
 import 'package:flower_app/features/cart/presentation/screens/cart_screen.dart';
-import 'package:flower_app/features/category/presentation/screens/category_screen.dart';
+import 'package:flower_app/features/home/presentation/screens/category_screen.dart';
 import 'package:flower_app/features/home/presentation/screens/home.dart';
 import 'package:flower_app/features/profile/presenttation/screens/profile.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +33,7 @@ class _RootState extends State<Root> {
               color: Colors.black.withOpacity(0.3),
               spreadRadius: 2,
               blurRadius: 8,
-              offset: Offset(4, 6), // X, Y offset
+              offset: Offset(4, 6),
             ),
           ],
         ),
@@ -73,7 +73,7 @@ class _RootState extends State<Root> {
           height: 28,
           color: isSelected
               ? AppColors.white
-              : AppColors.gray, // works if image is single-color (PNG/SVG)
+              : AppColors.gray,
         ),
       ),
     );
