@@ -20,6 +20,15 @@ import '../../features/auth/domain/repository/auth_repository.dart' as _i961;
 import '../../features/auth/domain/usecase/login_usecase.dart' as _i911;
 import '../../features/auth/domain/usecase/register_usecase.dart' as _i769;
 import '../../features/auth/presentation/cubit/auth_cubit.dart' as _i117;
+import '../../features/home/data/data%20source/home_remote_ds.dart' as _i520;
+import '../../features/home/data/data%20source/home_remote_ds_impl.dart'
+    as _i740;
+import '../../features/home/data/repository/home_repository_impl.dart' as _i9;
+import '../../features/home/domain/repository/home_repository.dart' as _i541;
+import '../../features/home/domain/usecase/best_seller_usecase.dart' as _i484;
+import '../../features/home/domain/usecase/category_usecase.dart' as _i589;
+import '../../features/home/domain/usecase/occasion_usecase.dart' as _i739;
+import '../../features/home/presentation/cubit/home_cubit.dart' as _i9;
 import '../dio/dio_helper.dart' as _i676;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -30,15 +39,35 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     gh.singleton<_i676.DioHelper>(() => _i676.DioHelper());
+    gh.factory<_i520.HomeRemoteDs>(() => _i740.HomeRemoteDsImpl());
     gh.factory<_i6.AuthRemoteDs>(() => _i624.AuthRemoteDsImpl());
     gh.factory<_i961.AuthRepository>(
       () => _i409.AuthRepositoryImpl(authRemoteDs: gh<_i6.AuthRemoteDs>()),
+    );
+    gh.factory<_i541.HomeRepository>(
+      () => _i9.HomeRepositoryImpl(homeRemoteDs: gh<_i520.HomeRemoteDs>()),
     );
     gh.factory<_i911.LoginUseCase>(
       () => _i911.LoginUseCase(authRepository: gh<_i961.AuthRepository>()),
     );
     gh.factory<_i769.RegisterUseCase>(
       () => _i769.RegisterUseCase(authRepository: gh<_i961.AuthRepository>()),
+    );
+    gh.factory<_i484.BestSellerUseCase>(
+      () => _i484.BestSellerUseCase(homeRepository: gh<_i541.HomeRepository>()),
+    );
+    gh.factory<_i589.CategoryUseCase>(
+      () => _i589.CategoryUseCase(homeRepository: gh<_i541.HomeRepository>()),
+    );
+    gh.factory<_i739.OccasionUseCase>(
+      () => _i739.OccasionUseCase(homeRepository: gh<_i541.HomeRepository>()),
+    );
+    gh.factory<_i9.HomeCubit>(
+      () => _i9.HomeCubit(
+        gh<_i589.CategoryUseCase>(),
+        gh<_i484.BestSellerUseCase>(),
+        gh<_i739.OccasionUseCase>(),
+      ),
     );
     gh.factory<_i117.AuthCubit>(
       () => _i117.AuthCubit(

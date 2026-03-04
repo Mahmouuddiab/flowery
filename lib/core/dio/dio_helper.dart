@@ -4,6 +4,7 @@ import 'package:flower_app/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
+
 @singleton
 class DioHelper {
   static final DioHelper _instance = DioHelper._internal();
@@ -14,13 +15,16 @@ class DioHelper {
 
   static Dio? _dio;
 
+
   DioHelper._internal() {
     BaseOptions baseOptions = BaseOptions(
       receiveDataWhenStatusError: true,
       contentType: "application/json",
     );
 
+
     _dio = Dio(baseOptions);
+    // Add interceptors
     _dio!.interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler) {
         // Include the Content-Type header for every request
@@ -28,6 +32,7 @@ class DioHelper {
         return handler.next(options);
       },
     ));
+
   }
 
   static Future<Response> _handleError(DioException e) {
@@ -75,12 +80,13 @@ class DioHelper {
 
   static Future<Response> getData({
     required String ?url,
-    Map<String, dynamic>? queryParameters
+    Map<String, dynamic>? queryParameters,
+    bool useCache = true,
   }) async {
     try {
       Response response = await _dio!.get(
           url!,
-          queryParameters: queryParameters
+          queryParameters: queryParameters,
       );
 
       return response;
