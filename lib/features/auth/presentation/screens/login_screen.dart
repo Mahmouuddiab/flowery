@@ -61,122 +61,127 @@ class _LoginScreenState extends State<LoginScreen> {
         }
 
       },
-      child: Scaffold(
-        resizeToAvoidBottomInset: true,
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
-            child: Form(
-              key: formKey,
-              child: ListView(
-                children: [
-                  Center(
-                    child: SvgPicture.asset(
-                      AppImages.logo,
-                      width: 50,
-                      height: 40,
-                    ),
-                  ),
-
-                  const Gap(90),
-
-                  Text(
-                    AppStrings.login,
-                    style: AppFontStyles.w500_18,
-                  ),
-
-                  const Gap(35),
-
-                  /// Email
-                  CustomTextField(
-                    label: AppStrings.email,
-                    controller: emailController,
-                    validator: (_) =>
-                        AppValidators.emailValidator(emailController.text),
-                    obscureText: false,
-                    suffixIcon: const Icon(Icons.email),
-                  ),
-
-                  const Gap(35),
-
-                  /// Password
-                  CustomTextField(
-                    label: AppStrings.password,
-                    obscureText: secure,
-                    controller: passwordController,
-                    validator: (_) => AppValidators.passwordValidator(
-                      passwordController.text,
-                    ),
-                    suffixIcon: IconButton(
-                      onPressed: () {
-                        setState(() {
-                          secure = !secure;
-                        });
-                      },
-                      icon: Icon(
-                        secure
-                            ? Icons.visibility_off
-                            : Icons.visibility,
+      child: GestureDetector(
+        onTap: (){
+          FocusScope.of(context).unfocus();
+        },
+        child: Scaffold(
+          resizeToAvoidBottomInset: true,
+          body: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              child: Form(
+                key: formKey,
+                child: ListView(
+                  children: [
+                    Center(
+                      child: SvgPicture.asset(
+                        AppImages.logo,
+                        width: 50,
+                        height: 40,
                       ),
                     ),
-                  ),
 
-                  const Gap(35),
+                    const Gap(90),
 
-                  /// Remember Row
-                  RememberMeRow(
-                    value: rememberMe,
-                    onChanged: (val) {
-                      setState(() {
-                        rememberMe = val ?? false;
-                      });
-                    },
-                    onForgotPassword: () {
+                    Text(
+                      AppStrings.login,
+                      style: AppFontStyles.w500_18,
+                    ),
 
-                    },
-                  ),
+                    const Gap(35),
 
-                  const Gap(70),
+                    /// Email
+                    CustomTextField(
+                      label: AppStrings.email,
+                      controller: emailController,
+                      validator: (_) =>
+                          AppValidators.emailValidator(emailController.text),
+                      obscureText: false,
+                      suffixIcon: const Icon(Icons.email),
+                    ),
 
-                  /// Login Button
-                  CustomButton(
-                    text: AppStrings.login,
-                    onPressed: () {
-                      if (formKey.currentState!.validate()) {
-                        cubit.login(
-                          LoginEntity(email: emailController.text, password:passwordController.text)
-                        );
-                      }
-                    },
-                  ),
+                    const Gap(35),
 
-                  const Gap(20),
-
-                  /// Register Navigation
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        AppStrings.doNot,
-                        style: Theme.of(context).textTheme.titleMedium,
+                    /// Password
+                    CustomTextField(
+                      label: AppStrings.password,
+                      obscureText: secure,
+                      controller: passwordController,
+                      validator: (_) => AppValidators.passwordValidator(
+                        passwordController.text,
                       ),
-                      const SizedBox(width: 8),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pushReplacementNamed(
-                            context,
-                            AppRoutes.register,
-                          );
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            secure = !secure;
+                          });
                         },
-                        child: Text(
-                          AppStrings.register,
-                          style:
-                          Theme.of(context).textTheme.titleSmall,
+                        icon: Icon(
+                          secure
+                              ? Icons.visibility_off
+                              : Icons.visibility,
                         ),
                       ),
-                    ],
-                  )
-                ],
+                    ),
+
+                    const Gap(35),
+
+                    /// Remember Row
+                    RememberMeRow(
+                      value: rememberMe,
+                      onChanged: (val) {
+                        setState(() {
+                          rememberMe = val ?? false;
+                        });
+                      },
+                      onForgotPassword: () {
+
+                      },
+                    ),
+
+                    const Gap(70),
+
+                    /// Login Button
+                    CustomButton(
+                      text: AppStrings.login,
+                      onPressed: () {
+                        if (formKey.currentState!.validate()) {
+                          cubit.login(
+                            LoginEntity(email: emailController.text, password:passwordController.text)
+                          );
+                        }
+                      },
+                    ),
+
+                    const Gap(20),
+
+                    /// Register Navigation
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          AppStrings.doNot,
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                        const SizedBox(width: 8),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pushReplacementNamed(
+                              context,
+                              AppRoutes.register,
+                            );
+                          },
+                          child: Text(
+                            AppStrings.register,
+                            style:
+                            Theme.of(context).textTheme.titleSmall,
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
               ),
             ),
           ),

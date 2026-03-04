@@ -49,7 +49,7 @@ class AppThemes {
         color: AppColors.black,
       ),
       titleSmall: TextStyle(
-        fontSize: AppSize.s16,
+        fontSize: AppSize.s14,
         fontWeight: FontWeight.w600,
         color: AppColors.primary,
         height: AppSize.s1_2,
