@@ -7,6 +7,7 @@ class CustomTextField extends StatelessWidget {
   bool obscureText ;
   Widget? suffixIcon;
   bool? isDense;
+  void Function(String)? onChanged;
    CustomTextField({
      super.key,
      required this.label,
@@ -14,7 +15,8 @@ class CustomTextField extends StatelessWidget {
      this.validator,
      required this.obscureText,
      this.suffixIcon,
-     this.isDense
+     this.isDense,
+     this.onChanged
    });
 
   @override
@@ -24,6 +26,7 @@ class CustomTextField extends StatelessWidget {
       validator: validator,
       controller: controller,
       obscureText: obscureText,
+      onChanged: onChanged,
       decoration: InputDecoration(
         labelText: label,
         suffixIcon: suffixIcon,
