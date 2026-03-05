@@ -18,12 +18,31 @@ class CategoryScreen extends StatefulWidget {
 
 class _CategoryScreenState extends State<CategoryScreen> {
   int selectedIndex = 0;
+
   HomeCubit homeCubit = getIt<HomeCubit>();
+
+  // TextEditingController searchController = TextEditingController();
+  //
+  // List filteredProducts = [];
+
   @override
   void initState() {
     super.initState();
     homeCubit.getHomeData();
   }
+
+  // void searchProduct(String query, List products) {
+  //     final results = products.where((product) {
+  //     final title = product.title.toLowerCase();
+  //     final input = query.toLowerCase();
+  //     return title.contains(input);
+  //   }).toList();
+  //
+  //   setState(() {
+  //     filteredProducts = results;
+  //   });
+  // }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit,HomeStates>(
@@ -33,6 +52,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
           return CustomLoader();
         }
         if(state is HomeLoaded){
+          // // if(filteredProducts.isEmpty && searchController.text.isEmpty){
+          // //   filteredProducts = state.products;
+          // }
           return GestureDetector(
             onTap: (){
               FocusScope.of(context).unfocus();
@@ -50,6 +72,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
                         onTap: (index) {
                           setState(() {
                             selectedIndex = index;
+                            // searchController.clear();
+                            // filteredProducts = [];
                           });
 
                           final selectedCategory =
@@ -59,6 +83,16 @@ class _CategoryScreenState extends State<CategoryScreen> {
                               selectedCategory.id);
                         },
                       ),
+                      Gap(20),
+                      // CustomTextField(
+                      //     label: AppStrings.search,
+                      //     controller: searchController,
+                      //     obscureText: false,
+                      //   suffixIcon: Icon(Icons.search),
+                      //   onChanged: (value) {
+                      //     // searchProduct(value, state.products);
+                      //   },
+                      // ),
                       Gap(25),
                       CustomRowText(textOne: "Products", textTwo: "view all"),
                       Gap(20),
@@ -72,7 +106,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                               ),
                               itemCount: state.products.length,
                               itemBuilder: (context, index) {
-                                    final product = state.products[index];
+                               var product = state.products[index];
                                 return ProductGridItem(product: product) ;
                               },
                           )
