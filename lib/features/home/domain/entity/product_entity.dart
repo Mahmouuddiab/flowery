@@ -6,6 +6,7 @@ class ProductEntity {
   final num priceAfterDiscount;
   final String category;
   final List<String> images;
+  final String description;
 
   ProductEntity({
     required this.id,
@@ -14,6 +15,7 @@ class ProductEntity {
     required this.price,
     required this.priceAfterDiscount,
     required this.category,
-    required this.images
+    required this.images,
+    required this.description
 });
 }

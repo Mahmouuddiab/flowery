@@ -1,6 +1,7 @@
 import 'package:flower_app/core/di/di.dart';
 import 'package:flower_app/features/home/presentation/cubit/home_cubit.dart';
 import 'package:flower_app/features/home/presentation/cubit/home_states.dart';
+import 'package:flower_app/features/home/presentation/screens/product_details.dart';
 import 'package:flower_app/features/home/presentation/widgets/category_tab.dart';
 import 'package:flower_app/features/home/presentation/widgets/custom_row_text.dart';
 import 'package:flower_app/features/home/presentation/widgets/product_grid_item.dart';
@@ -98,17 +99,22 @@ class _CategoryScreenState extends State<CategoryScreen> {
                       Gap(20),
                       Expanded(
                           child: GridView.builder(
-                                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
-                                  crossAxisSpacing: 16,
-                                  mainAxisSpacing: 16,
-                                  childAspectRatio: 0.7,
-                              ),
-                              itemCount: state.products.length,
-                              itemBuilder: (context, index) {
-                               var product = state.products[index];
-                                return ProductGridItem(product: product) ;
-                              },
+                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              crossAxisSpacing: 16,
+                              mainAxisSpacing: 16,
+                              childAspectRatio: 0.7,
+                            ),
+                            itemCount: state.products.length,
+                            itemBuilder: (context, index) {
+                              var product = state.products[index];
+                              return ProductGridItem(
+                                  product: product,
+                                onTap: (){
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetailsScreen(product: product),));
+                                },
+                              ) ;
+                            },
                           )
                       )
                     ],
