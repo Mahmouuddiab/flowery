@@ -16,7 +16,7 @@ class Root extends StatefulWidget {
 class _RootState extends State<Root> {
   int currentIndex = 0;
 
-  final List<Widget> screens = [Home(),CategoryScreen(),CartScreen(),Profile()];
+  final List<Widget> screens = [Home(),CategoryScreen(),CartScreen(),ProfileScreen()];
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class _RootState extends State<Root> {
         height: 70,
         margin: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: AppColors.white,
+          color: Theme.of(context).cardColor,
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(

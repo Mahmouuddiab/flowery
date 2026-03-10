@@ -101,8 +101,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 horizontal: 20,
                 vertical: 10,
               ),
-              decoration: const BoxDecoration(
-                color: Color(0xffF5F5F5),
+              decoration:  BoxDecoration(
+                color: Theme.of(context).cardColor,
                 borderRadius: BorderRadius.vertical(
                   top: Radius.circular(20),
                 ),
@@ -119,23 +119,20 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       children: [
                         Text(
                           "SAR ${widget.product.price}",
-                          style: const TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style:  Theme.of(context).textTheme.bodyLarge,
                         ),
                         Text(
                           "Status: 1135 in stock",
-                          style: const TextStyle(fontSize: 16),
+                          style: Theme.of(context).textTheme.bodyLarge,
                         )
                       ],
                     ),
 
                     const SizedBox(height: 5),
 
-                    const Text(
+                     Text(
                       "All prices include tax",
-                      style: TextStyle(color: Colors.grey),
+                      style: Theme.of(context).textTheme.bodyLarge,
                     ),
 
                     const SizedBox(height: 10),
@@ -143,21 +140,15 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     /// PRODUCT NAME
                     Text(
                       widget.product.title,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                      ),
+                      style: Theme.of(context).textTheme.bodyLarge,
                     ),
 
                     const SizedBox(height: 20),
 
                     /// DESCRIPTION TITLE
-                    const Text(
+                     Text(
                       "Description",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: Theme.of(context).textTheme.bodyLarge,
                     ),
 
                     const SizedBox(height: 10),
@@ -165,10 +156,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     /// DESCRIPTION
                     Text(
                       widget.product.description,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        height: 1.2,
-                      ),
+                      style: Theme.of(context).textTheme.bodyLarge,
                     ),
                   ],
                 ),
