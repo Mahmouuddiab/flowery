@@ -1,12 +1,15 @@
 import 'package:flower_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:flower_app/features/auth/presentation/screens/register_screen.dart';
 import 'package:flower_app/root.dart';
+import 'package:flower_app/shared/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'app_routes.dart';
 
 class AppRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case AppRoutes.splash:
+        return MaterialPageRoute(builder: (_) => SplashScreen());
       case AppRoutes.login:
         return MaterialPageRoute(builder: (_) => LoginScreen());
       case AppRoutes.register:

@@ -21,6 +21,7 @@ class AuthRemoteDsImpl implements AuthRemoteDs {
     if(response.statusCode == 201 || response.statusCode == 200){
       final user = UserModel.fromJson(response.data);
       final token = user.token;
+      print("user token is $token");
       CacheHelper.saveToken(token!);
       return unit;
     }

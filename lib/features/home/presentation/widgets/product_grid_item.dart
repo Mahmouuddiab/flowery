@@ -28,7 +28,7 @@ class ProductGridItem extends StatelessWidget {
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).cardColor,
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
@@ -117,10 +117,7 @@ class ProductGridItem extends StatelessWidget {
                     product.title,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                    ),
+                    style: Theme.of(context).textTheme.bodyLarge,
                   ),
                   const SizedBox(height: 6),
 
@@ -129,21 +126,13 @@ class ProductGridItem extends StatelessWidget {
                     children: [
                       Text(
                         "\$${product.priceAfterDiscount}",
-                        style: const TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
+                        style: Theme.of(context).textTheme.bodyLarge,
                       ),
                       const SizedBox(width: 6),
                       if (product.price > product.priceAfterDiscount)
                         Text(
                           "\$${product.price}",
-                          style: const TextStyle(
-                            fontSize: 12,
-                            decoration: TextDecoration.lineThrough,
-                            color: Colors.grey,
-                          ),
+                          style: Theme.of(context).textTheme.bodySmall,
                         ),
                     ],
                   ),

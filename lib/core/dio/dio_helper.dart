@@ -81,12 +81,14 @@ class DioHelper {
   static Future<Response> getData({
     required String ?url,
     Map<String, dynamic>? queryParameters,
+    Options? options,
     bool useCache = true,
   }) async {
     try {
       Response response = await _dio!.get(
           url!,
           queryParameters: queryParameters,
+        options: options
       );
 
       return response;
