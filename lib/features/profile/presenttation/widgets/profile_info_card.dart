@@ -1,5 +1,6 @@
+import 'package:flower_app/core/cache/cache_helper.dart';
+import 'package:flower_app/core/router/app_routes.dart';
 import 'package:flower_app/core/theme/theme_cubit.dart';
-import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/app_sizes.dart';
 import 'package:flower_app/features/profile/domain/entity/user_profile_entity.dart';
 import 'package:flower_app/features/profile/presenttation/widgets/info_containeer.dart';
@@ -154,7 +155,7 @@ void _showLogoutDialog(BuildContext context) {
           ),
           TextButton(
             onPressed: () {
-              // logic of logout here
+              _performLogout(context);
               Navigator.pop(context);
             },
             child: const Text(
@@ -166,4 +167,9 @@ void _showLogoutDialog(BuildContext context) {
       );
     },
   );
+}
+void _performLogout(BuildContext context) async {
+  // Clear only the token
+  await CacheHelper.clearToken();
+  Navigator.pushReplacementNamed(context,AppRoutes.login);
 }

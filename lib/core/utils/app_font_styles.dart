@@ -5,6 +5,7 @@ abstract class AppFontStyles {
   static const TextStyle w400_12 = TextStyle(
     fontWeight: FontWeight.w400,
     fontSize: 12,
+    color: Colors.black
   );
 
   static const TextStyle w400_14 = TextStyle(

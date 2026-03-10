@@ -1,4 +1,5 @@
 import 'package:flower_app/core/utils/app_images.dart';
+import 'package:flower_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:flower_app/root.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -36,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen>
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (_) => Root(),
+          builder: (_) => LoginScreen(),
         ), // replace with your main screen
       );
     });
