@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flower_app/core/di/di.dart';
 import 'package:flower_app/core/router/app_routes.dart';
 import 'package:flower_app/core/utils/app_font_styles.dart';
@@ -93,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     /// Email
                     CustomTextField(
-                      label: AppStrings.email,
+                      label: AppStrings.email.tr(),
                       controller: emailController,
                       validator: (_) =>
                           AppValidators.emailValidator(emailController.text),
@@ -105,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     /// Password
                     CustomTextField(
-                      label: AppStrings.password,
+                      label: AppStrings.password.tr(),
                       obscureText: secure,
                       controller: passwordController,
                       validator: (_) => AppValidators.passwordValidator(
@@ -144,7 +145,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     /// Login Button
                     CustomButton(
-                      text: AppStrings.login,
+                      text: AppStrings.login.tr(),
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
                           cubit.login(
@@ -161,7 +162,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          AppStrings.doNot,
+                          AppStrings.doNot.tr(),
                           style: Theme.of(context).textTheme.titleMedium,
                         ),
                         const SizedBox(width: 8),
@@ -173,7 +174,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             );
                           },
                           child: Text(
-                            AppStrings.register,
+                            AppStrings.register.tr(),
                             style:
                             Theme.of(context).textTheme.titleSmall,
                           ),

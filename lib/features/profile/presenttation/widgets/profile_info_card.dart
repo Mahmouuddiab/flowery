@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flower_app/core/cache/cache_helper.dart';
 import 'package:flower_app/core/router/app_routes.dart';
 import 'package:flower_app/core/theme/theme_cubit.dart';
@@ -61,7 +62,6 @@ class ProfileInfoCard extends StatelessWidget {
             ],
           ),
           Gap(20),
-
           // Theme container updates text based on selected theme
           BlocBuilder<ThemeCubit, ThemeMode>(
             builder: (context, themeMode) {
@@ -82,10 +82,16 @@ class ProfileInfoCard extends StatelessWidget {
               );
             },
           ),
+          Gap(20),
+          InfoContainer(
+            text: "language".tr(),
+            icon: Icons.language,
+            onTap: () => _showLanguageModal(context),
+          ),
           Spacer(),
           InfoContainer(
               icon: Icons.logout,
-              text: "logout",
+              text: "logout".tr(),
             onTap: () => _showLogoutDialog(context),
           )
         ],
@@ -164,6 +170,54 @@ void _showLogoutDialog(BuildContext context) {
             ),
           ),
         ],
+      );
+    },
+  );
+}
+void _showLanguageModal(BuildContext context) {
+  showModalBottomSheet(
+    context: context,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+    ),
+    builder: (context) {
+      return Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+
+            Text(
+              "select_language".tr(),
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+
+            const SizedBox(height: 20),
+
+            ListTile(
+              leading: const Text("🇬🇧", style: TextStyle(fontSize: 22)),
+              title: const Text("English"),
+              onTap: () {
+                context.setLocale(const Locale('en'));
+                Navigator.pop(context);
+              },
+            ),
+
+            ListTile(
+              leading: const Text("🇸🇦", style: TextStyle(fontSize: 22)),
+              title: const Text("العربية"),
+              onTap: () {
+                context.setLocale(const Locale('ar'));
+                Navigator.pop(context);
+              },
+            ),
+
+            const SizedBox(height: 10),
+          ],
+        ),
       );
     },
   );

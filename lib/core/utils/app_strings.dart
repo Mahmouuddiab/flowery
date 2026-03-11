@@ -1,20 +1,22 @@
 class AppStrings{
-  static const String name = "Name";
-  static const String email = "Email";
-  static const String password = "Password";
-  static const String phone = "Phone Number";
-  static const String gender = "Gender";
-  static const String male = "Male";
-  static const String female = "Female";
-  static const String register = "Register";
-  static const String login = "Login";
+  static const String name = "name";
+  static const String email = "email";
+  static const String password = "password";
+  static const String phone = "phone";
+  static const String gender = "gender";
+  static const String male = "male";
+  static const String female = "female";
+  static const String register = "register";
+  static const String login = "login";
   static const String already = "already have an account ?";
   static const String home = "Home";
-  static const String category = "Category";
-  static const String search = "Search";
-  static const String profile = "Profile";
-  static const String create = "Create Your Account";
+  static const String category = "category";
+  static const String search = "search";
+  static const String profile = "profile";
+  static const String create = "create your account";
   static const String doNot = "don't have an account ?";
+  static const String forget = "forget password";
+  static const String remember = "remember me";
 
   static String errorNetwork = "No Internet connection";
   static String errorUnauthorized = 'Unauthorized access.';
