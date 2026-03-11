@@ -1,3 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flower_app/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 
 class GenderDropdown extends StatelessWidget {
@@ -15,19 +17,19 @@ class GenderDropdown extends StatelessWidget {
     return DropdownButtonFormField<String>(
       value: selectedGender,
       decoration: InputDecoration(
-        labelText: "Gender",
+        labelText: AppStrings.gender.tr(),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
         ),
       ),
-      items: const [
+      items:  [
         DropdownMenuItem(
           value: "male",
-          child: Text("Male"),
+          child: Text(AppStrings.male.tr()),
         ),
         DropdownMenuItem(
           value: "female",
-          child: Text("Female"),
+          child: Text(AppStrings.female.tr()),
         ),
       ],
       onChanged: onChanged,

@@ -7,13 +7,19 @@ class InfoContainer extends StatelessWidget {
 
   const InfoContainer({
     super.key,
-     this.icon,
+    this.icon,
     required this.text,
-    this.onTap
+    this.onTap,
   });
+
+  bool _isNumber(String value) {
+    return RegExp(r'^[0-9+]+$').hasMatch(value);
+  }
 
   @override
   Widget build(BuildContext context) {
+    final isRTL = Directionality.of(context) == TextDirection.rtl;
+
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -21,18 +27,26 @@ class InfoContainer extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(
-            color: Colors.grey.shade300,
-          ),
+          border: Border.all(color: Colors.grey.shade300),
           color: Colors.grey.shade50,
         ),
         child: Row(
+          textDirection: Directionality.of(context), // important for RTL
           children: [
             Icon(icon, color: Colors.grey),
+
             const SizedBox(width: 10),
+
             Expanded(
-              child: Text(
-                text,style: Theme.of(context).textTheme.labelMedium,
+              child: Directionality(
+                // keep phone/email numbers correct in RTL
+                textDirection:
+                _isNumber(text) ? TextDirection.ltr : TextDirection.rtl,
+                child: Text(
+                  text,
+                  style: Theme.of(context).textTheme.labelMedium,
+                  textAlign: isRTL ? TextAlign.right : TextAlign.left,
+                ),
               ),
             ),
           ],

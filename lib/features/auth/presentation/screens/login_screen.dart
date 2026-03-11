@@ -86,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     const Gap(90),
 
                     Text(
-                      AppStrings.login,
+                      AppStrings.login.tr(),
                       style: AppFontStyles.w500_18,
                     ),
 

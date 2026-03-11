@@ -3,6 +3,7 @@
   "login": "تسجيل الدخول",
   "email": "البريد الإلكتروني",
   "password": "كلمة المرور",
+  "confirm password": "تأكيد كلمة المرور",
   "welcome": "مرحبا",
   "phone": "رقم الهاتف",
   "profile": "معلومات حسابك الشخصي",
@@ -16,5 +17,11 @@
   "female": "انثي",
   "create your account": "إنشاء حساب جديد",
   "don't have an account ?": "ليس لديك حساب بالفعل ؟",
-  "remember me": "ذكرني"
+  "remember me": "ذكرني",
+  "Cancel": "إلغاء",
+  "first name": "الإسم الاول",
+  "last name": "الإسم الثاني",
+  "already have an account ?": "لديك حساب بالفعل ؟",
+  "are you sure you want to logout ?": "هل أنت متأكد من رغبتك في تسجيل الخروج ؟",
+  "select language": "اختر اللغة"
 }
