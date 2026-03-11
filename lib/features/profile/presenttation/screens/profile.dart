@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flower_app/core/di/di.dart';
 import 'package:flower_app/features/profile/presenttation/cubit/profile_states.dart';
 import 'package:flower_app/features/profile/presenttation/widgets/profile_info_card.dart';
@@ -16,7 +17,7 @@ class ProfileScreen extends StatelessWidget {
       create: (context) => profileCubit..getProfile(),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Profile"),
+          title:  Text("profile".tr()),
         ),
         body: BlocBuilder<ProfileCubit, ProfileState>(
           builder: (context, state) {

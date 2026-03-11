@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flower_app/core/router/app_router.dart';
 import 'package:flower_app/core/router/app_routes.dart';
 import 'package:flower_app/core/services/easy_loading.dart';
@@ -8,10 +9,26 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'core/di/di.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
   configureDependencies();
   ConfigLoading().showLoading();
-  runApp(BlocProvider(create: (context) => ThemeCubit(), child: MyApp()));
+
+  runApp(
+    EasyLocalization(
+      supportedLocales: const [
+        Locale('en'),
+        Locale('ar'),
+      ],
+      path: 'assets/translations',
+      fallbackLocale: const Locale('en'),
+      child: BlocProvider(
+        create: (context) => ThemeCubit(),
+        child: MyApp(),
+      ),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -19,7 +36,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ThemeCubit,ThemeMode>(
+    return BlocBuilder<ThemeCubit, ThemeMode>(
       builder: (context, themeMode) {
         return MaterialApp(
           builder: EasyLoading.init(),
@@ -28,9 +45,13 @@ class MyApp extends StatelessWidget {
           darkTheme: AppThemes.darkMode,
           themeMode: themeMode,
           debugShowCheckedModeBanner: false,
+          // 🌍 Localization
+          locale: context.locale,
+          supportedLocales: context.supportedLocales,
+          localizationsDelegates: context.localizationDelegates,
           initialRoute: AppRoutes.splash,
           onGenerateRoute: AppRouter.generateRoute,
-        ) ;
+        );
       },
     );
   }

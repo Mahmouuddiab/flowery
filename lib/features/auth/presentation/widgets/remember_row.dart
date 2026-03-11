@@ -1,3 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flower_app/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 
 class RememberMeRow extends StatelessWidget {
@@ -29,8 +31,8 @@ class RememberMeRow extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 8),
-            const Text(
-              "Remember me",
+             Text(
+              "Remember me".tr(),
               style: TextStyle(
                 fontSize: 14,
               ),
@@ -39,8 +41,8 @@ class RememberMeRow extends StatelessWidget {
         ),
         GestureDetector(
           onTap: onForgotPassword,
-          child: const Text(
-            "Forget password?",
+          child:  Text(
+            AppStrings.forget.tr(),
             style: TextStyle(
               fontSize: 14,
               decoration: TextDecoration.underline,

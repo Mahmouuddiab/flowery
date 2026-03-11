@@ -1,0 +1,20 @@
+{
+  "app_name": "Flower App",
+  "login": "Login",
+  "email": "Email",
+  "password": "Password",
+  "welcome": "Welcome",
+  "phone": "Phone",
+  "profile": "Profile",
+  "forget password": "Forget Password",
+  "register": "Register",
+  "logout": "Logout",
+  "search": "Search",
+  "category": "Category",
+  "gender": "Gender",
+  "male": "Male",
+  "female": "Female",
+  "create your account": "Create Your Account",
+  "don't have an account ?": "Don't Have an Account ?",
+  "remember me": "Remember Me"
+}
