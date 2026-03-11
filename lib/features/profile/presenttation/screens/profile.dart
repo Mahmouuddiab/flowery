@@ -28,7 +28,7 @@ class ProfileScreen extends StatelessWidget {
             if (state is ProfileLoaded) {
               final user = state.user;
 
-              return ProfileInfoCard(user: user,);
+              return ProfileInfoCard(user: user);
             }
 
             if (state is ProfileError) {

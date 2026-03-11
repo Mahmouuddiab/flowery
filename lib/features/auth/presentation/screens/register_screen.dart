@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flower_app/core/di/di.dart';
 import 'package:flower_app/core/router/app_routes.dart';
 import 'package:flower_app/core/utils/app_font_styles.dart';
@@ -80,14 +81,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       child: SvgPicture.asset(AppImages.logo, width: 50, height: 40),
                     ),
                     Gap(50),
-                    Text(AppStrings.create,style: AppFontStyles.w500_18,),
+                    Text(AppStrings.create.tr(),style: AppFontStyles.w500_18,),
                     Gap(35),
                     Row(
                       spacing: 10,
                       children: [
                         Expanded(
                           child: CustomTextField(
-                            label: "First ${AppStrings.name}",
+                            label: AppStrings.firstName.tr(),
                             obscureText: false,
                             controller: firstController,
                             validator: (_) => AppValidators.displayNameValidator(
@@ -98,7 +99,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                         Expanded(
                           child: CustomTextField(
-                            label: "Last ${AppStrings.name}",
+                            label: AppStrings.lastName.tr(),
                             obscureText: false,
                             controller: lastController,
                             validator: (_) => AppValidators.displayNameValidator(
@@ -111,7 +112,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                     Gap(35),
                     CustomTextField(
-                      label: AppStrings.email,
+                      label: AppStrings.email.tr(),
                       controller: emailController,
                       validator: (_) =>
                           AppValidators.emailValidator(emailController.text),
@@ -124,7 +125,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       children: [
                         Expanded(
                           child: CustomTextField(
-                            label: AppStrings.password,
+                            label: AppStrings.password.tr(),
                             obscureText: secure,
                             controller: passwordController,
                             validator: (_) => AppValidators.passwordValidator(
@@ -142,7 +143,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                         Expanded(
                           child: CustomTextField(
-                            label: "Confirm ${AppStrings.password}",
+                            label: AppStrings.confirmPassword.tr(),
                             obscureText: secure2,
                             controller: confirmPasswordController,
                             validator: (_) => AppValidators.repeatPasswordValidator(
@@ -163,7 +164,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                     Gap(35),
                     CustomTextField(
-                      label: AppStrings.phone,
+                      label: AppStrings.phone.tr(),
                       controller: phoneController,
                       // validator: (_) =>
                       //     AppValidators.phoneValidator(phoneController.text, context),
@@ -181,7 +182,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                     Gap(70),
                     CustomButton(
-                        text: AppStrings.register,
+                        text: AppStrings.register.tr(),
                         onPressed: (){
                           if(formKey.currentState!.validate()){
                             authCubit.register(
@@ -203,12 +204,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       spacing: 8,
                       children: [
-                        Text(AppStrings.already,style:Theme.of(context).textTheme.titleMedium),
+                        Text(AppStrings.already.tr(),style:Theme.of(context).textTheme.titleMedium),
                         GestureDetector(
                             onTap: (){
                               Navigator.pushReplacementNamed(context, AppRoutes.login);
                             },
-                            child: Text(AppStrings.login,style:Theme.of(context).textTheme.titleSmall,)
+                            child: Text(AppStrings.login.tr(),style:Theme.of(context).textTheme.titleSmall,)
                         )
                       ],
                     )

@@ -32,7 +32,7 @@ class RememberMeRow extends StatelessWidget {
             ),
             const SizedBox(width: 8),
              Text(
-              "Remember me".tr(),
+              AppStrings.remember.tr(),
               style: TextStyle(
                 fontSize: 14,
               ),
