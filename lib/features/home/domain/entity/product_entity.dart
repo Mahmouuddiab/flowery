@@ -7,6 +7,8 @@ class ProductEntity {
   final String category;
   final List<String> images;
   final String description;
+  final int quantity;
+  final double rateAvg;
 
   ProductEntity({
     required this.id,
@@ -16,6 +18,8 @@ class ProductEntity {
     required this.priceAfterDiscount,
     required this.category,
     required this.images,
-    required this.description
+    required this.description,
+    required this.quantity,
+    required this.rateAvg
 });
 }

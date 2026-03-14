@@ -122,7 +122,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           style:  Theme.of(context).textTheme.bodyLarge,
                         ),
                         Text(
-                          "Status: 1135 in stock",
+                          "Status: ${widget.product.quantity} in stock",
                           style: Theme.of(context).textTheme.bodyLarge,
                         )
                       ],

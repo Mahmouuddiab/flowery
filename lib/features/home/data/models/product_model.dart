@@ -9,7 +9,9 @@ class ProductModel extends ProductEntity {
     required super.priceAfterDiscount,
     required super.category,
     required super.images,
-    required super.description
+    required super.description,
+    required super.quantity,
+    required super.rateAvg
   });
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
@@ -25,6 +27,8 @@ class ProductModel extends ProductEntity {
           : json['category'] ?? "",
       images:
           (json['images'] as List?)?.map((e) => e.toString()).toList() ?? [],
+      quantity: (json['quantity'] as num?)?.toInt().abs() ?? 0,
+      rateAvg:  (json['rateAvg'] ?? 0).toDouble(),
     );
   }
 }
