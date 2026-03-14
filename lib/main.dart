@@ -23,8 +23,10 @@ void main() async {
       ],
       path: 'assets/translations',
       fallbackLocale: const Locale('en'),
-      child: BlocProvider(
-        create: (context) => ThemeCubit(),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (context) => ThemeCubit(),),
+        ],
         child: MyApp(),
       ),
     ),

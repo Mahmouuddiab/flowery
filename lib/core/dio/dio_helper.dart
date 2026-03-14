@@ -65,9 +65,10 @@ class DioHelper {
   static Future<Response> postData({
     required String url,
     required dynamic data,
+    Options? options
   }) async {
     try {
-      Response response = await _dio!.post(url, data: data);
+      Response response = await _dio!.post(url, data: data,options: options);
       return response;
     } catch (e) {
       if (e is DioException) {
@@ -88,7 +89,7 @@ class DioHelper {
       Response response = await _dio!.get(
           url!,
           queryParameters: queryParameters,
-        options: options
+          options: options
       );
 
       return response;

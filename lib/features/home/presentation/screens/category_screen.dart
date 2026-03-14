@@ -1,4 +1,5 @@
 import 'package:flower_app/core/di/di.dart';
+import 'package:flower_app/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:flower_app/features/home/presentation/cubit/home_cubit.dart';
 import 'package:flower_app/features/home/presentation/cubit/home_states.dart';
 import 'package:flower_app/features/home/presentation/screens/product_details.dart';

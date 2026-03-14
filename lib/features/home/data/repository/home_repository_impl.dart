@@ -61,7 +61,9 @@ class HomeRepositoryImpl implements HomeRepository {
             priceAfterDiscount: e.priceAfterDiscount,
             category: e.category,
             images: e.images,
-            description: e.description
+            description: e.description,
+            quantity: e.quantity,
+            rateAvg: e.rateAvg
           ),
         )
         .toList();
