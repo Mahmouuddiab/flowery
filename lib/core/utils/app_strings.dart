@@ -22,6 +22,7 @@ class AppStrings{
   static const String forget = "forget password";
   static const String remember = "remember me";
   static const String cancel = "Cancel";
+  static const String delete = "Delete";
 
   static String errorNetwork = "No Internet connection";
   static String errorUnauthorized = 'Unauthorized access.';

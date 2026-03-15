@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flower_app/core/dio/dio_helper.dart';
 import 'package:flower_app/features/cart/data/data_source/cart_remote_ds.dart';
 import 'package:flower_app/features/cart/data/models/cart_model.dart';
+import 'package:flower_app/features/cart/data/models/user_cart_model.dart';
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: CartRemoteDs)
@@ -36,6 +37,45 @@ class CartRemoteDsImpl implements CartRemoteDs {
         throw Exception("Something went wrong. Please try again.");
       }
     }
+  }
+
+  @override
+  Future<UserCartModel> getCart(String token) async{
+    try {
+      final response = await DioHelper.getData(
+        url: "https://flower.elevateegy.com/api/v1/cart",
+        options: Options(
+          headers: {"Authorization": "Bearer $token"},
+        ),
+      );
+
+      print("response status: ${response.statusCode}");
+      print("response data: ${response.data}");
+
+      return UserCartModel.fromJson(response.data); // or however your model parses
+
+    }on DioError catch (e) {
+      if (e.response != null) {
+        print("Status code: ${e.response?.statusCode}");
+        print("Response data: ${e.response?.data}");
+        // Show error message to user
+        throw Exception(e.response?.data['error'] ?? "Failed to add product");
+      } else {
+        // Network or other error
+        throw Exception("Something went wrong. Please try again.");
+      }
+    }
+  }
+
+  @override
+  Future<void> deleteCartItem(String token, String id) async {
+    await DioHelper.deleteData(
+      url: 'https://flower.elevateegy.com/api/v1/cart/',
+      queryParameters: {
+        "_id": id,
+      },
+      options: Options(headers: {'Authorization': 'Bearer $token'}),
+    );
   }
   
 }

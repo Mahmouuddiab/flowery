@@ -25,7 +25,7 @@ class ProductGridItem extends StatelessWidget {
 
     // ✅ Wrap the widget with a BlocProvider here
     return BlocProvider(
-      create: (_) => CartCubit(getIt()), // inject your AddToCartUseCase
+      create: (_) => CartCubit(getIt(),getIt(),getIt()), // inject your AddToCartUseCase
       child: Builder(
         builder: (context) {
           // This context is now below the BlocProvider
