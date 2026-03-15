@@ -1,6 +1,6 @@
 import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/app_images.dart';
-import 'package:flower_app/features/cart/presentation/screens/cart_screen.dart';
+import 'package:flower_app/features/cart/presentation/screens/user_cart_screen.dart';
 import 'package:flower_app/features/home/presentation/screens/category_screen.dart';
 import 'package:flower_app/features/home/presentation/screens/home.dart';
 import 'package:flower_app/features/profile/presenttation/screens/profile.dart';
@@ -16,7 +16,7 @@ class Root extends StatefulWidget {
 class _RootState extends State<Root> {
   int currentIndex = 0;
 
-  final List<Widget> screens = [Home(),CategoryScreen(),CartScreen(),ProfileScreen()];
+  final List<Widget> screens = [Home(),CategoryScreen(),UserCartScreen(),ProfileScreen()];
 
   @override
   Widget build(BuildContext context) {

@@ -123,9 +123,11 @@ class DioHelper {
 
   static Future<Response> deleteData({
     required String url,
+    Options? options,
+    Map<String, dynamic>? queryParameters
   }) async {
     try {
-      Response response = await _dio!.delete(url);
+      Response response = await _dio!.delete(url,options: options,queryParameters: queryParameters);
       return response;
     } catch (e) {
       if (e is DioException) {
