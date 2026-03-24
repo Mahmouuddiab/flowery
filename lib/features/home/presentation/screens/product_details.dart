@@ -56,7 +56,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   top: 40,
                   left: 10,
                   child: IconButton(
-                    icon: const Icon(Icons.arrow_back_ios,color: Colors.black,),
+                    icon: const Icon(Icons.arrow_back_ios),
                     onPressed: () {
                       Navigator.pop(context);
                     },

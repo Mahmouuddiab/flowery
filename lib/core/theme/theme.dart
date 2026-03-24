@@ -95,6 +95,9 @@ class AppThemes {
         foregroundColor: WidgetStateProperty.all(Colors.white),
       ),
     ),
+      iconTheme: IconThemeData(
+          color: AppColors.black
+      )
   );
 
   static final lightMode = ThemeData(
@@ -110,17 +113,23 @@ class AppThemes {
       type: BottomNavigationBarType.fixed,
     ),
     appBarTheme: const AppBarTheme(
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.primary, // 👈 use a dark color
       elevation: AppSize.s0,
+      centerTitle: true,
       titleTextStyle: TextStyle(
-        color: AppColors.black,
+        color: AppColors.white, // 👈 match with dark background
         fontSize: AppSize.s20,
         fontWeight: FontWeight.bold,
       ),
-      iconTheme: IconThemeData(color: AppColors.black),
+      iconTheme: IconThemeData(
+        color: AppColors.white, // 👈 now clearly visible
+      ),
+      actionsIconTheme: IconThemeData(
+        color: AppColors.white, // 👈 for right-side icons
+      ),
       systemOverlayStyle: SystemUiOverlayStyle(
-        statusBarColor: AppColors.transparent,
-        statusBarIconBrightness: Brightness.dark,
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.light, // 👈 important for dark bg
       ),
     ),
     textTheme: const TextTheme(
@@ -187,5 +196,8 @@ class AppThemes {
         foregroundColor: WidgetStateProperty.all(Colors.white),
       ),
     ),
+    iconTheme: IconThemeData(
+      color: AppColors.white
+    )
   );
 }
